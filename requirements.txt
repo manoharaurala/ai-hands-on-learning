@@ -4,4 +4,6 @@ gradio
 requests
 beautifulsoup4
 google-genai
+langchain
+langchain-openai
 

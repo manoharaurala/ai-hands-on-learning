@@ -1,5 +1,3 @@
-# pip install python-dotenv
-from dotenv import load_dotenv
-load_dotenv()                 # loads everything from .env
+from util.config import ENV_PATH
 
-# now OpenAI() finds the key automatically — no key in your code
+print(f"Environment loaded from {ENV_PATH}")

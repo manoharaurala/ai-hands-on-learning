@@ -1,16 +1,8 @@
-import os
-from pathlib import Path
-
 from openai import OpenAI
-from dotenv import load_dotenv
-from scraper import fetch_website_contents
+from util.scraper import fetch_website_contents
+from util.config import get_api_key
 
-env_path = Path(__file__).resolve().parents[2] / ".env"
-load_dotenv(env_path)
-
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise RuntimeError(f"OPENAI_API_KEY is not set in {env_path}")
+api_key = get_api_key("OPENAI_API_KEY")
 
 client = OpenAI(
     api_key=api_key,
@@ -21,13 +13,14 @@ system_prompt = """You analyze the contents of a website and
 give a short, friendly summary. Ignore navigation menus.
 Respond in markdown."""
 
+
 def summarize(url):
     website = fetch_website_contents(url)
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {"role":"system", "content": system_prompt},
-            {"role":"user",   "content": f"Summarize this website:\n\n{website}"},
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Summarize this website:\n\n{website}"},
         ],
     )
     return response.choices[0].message.content

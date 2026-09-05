@@ -10,6 +10,7 @@ Code/
 ├── requirements.txt
 ├── FirstClass/                  # Class exercises
 ├── SecondClass/                 # Class exercises
+├── util/                        # Shared utility modules
 └── ...                          # Additional class folders
 ```
 
@@ -57,6 +58,12 @@ From the `Code` folder, run any Python file by providing its path:
 ```bash
 python FirstClass/first_call.py
 python FirstClass/AI_Website_Summarizer/app.py
+```
+
+For a class that imports shared modules, run it from the repository root with `-m`:
+
+```bash
+python -m SecondClass.summarizer_langchain
 ```
 
 For a folder-based app, run its entry-point file from the project root so imports resolve correctly:
