@@ -1,0 +1,7 @@
+openai
+python-dotenv
+gradio
+requests
+beautifulsoup4
+google-genai
+
