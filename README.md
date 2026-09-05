@@ -65,6 +65,7 @@ For a class that imports shared modules, run it from the repository root with `-
 ```bash
 python -m SecondClass.summarizer_langchain
 python -m SecondClass.memory_demo
+python -m SecondClass.app
 ```
 
 For a folder-based app, run its entry-point file from the project root so imports resolve correctly:

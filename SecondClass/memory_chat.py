@@ -8,7 +8,6 @@ from langchain_core.messages import HumanMessage, AIMessage
 from util.config import get_api_key
 
 api_key = get_api_key("OPENAI_API_KEY")
-
 model = ChatOpenAI(model="gpt-4o-mini", api_key=api_key)
 
 prompt = ChatPromptTemplate.from_messages(
