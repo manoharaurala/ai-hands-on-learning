@@ -6,4 +6,6 @@ beautifulsoup4
 google-genai
 langchain
 langchain-openai
+langchain-google-genai
+langchain-groq
 

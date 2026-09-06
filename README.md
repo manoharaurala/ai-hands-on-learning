@@ -46,7 +46,7 @@ Create `.env` directly inside the `Code` folder:
 
 ```env
 OPENAI_API_KEY=your_api_key_here
-GEMINI_API_KEY=your_gemini_key_here
+GOOGLE_API_KEY=your_gemini_key_here
 ```
 
 Only add the variables required by the class you are running. Do not commit `.env` or share API keys.
