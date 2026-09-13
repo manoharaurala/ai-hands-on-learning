@@ -1,0 +1,24 @@
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+your_long_document = (
+    "# Bengaluru Overview\n\n"
+    "## Tech Industry\n"
+    "Bengaluru is known as India's Silicon Valley. Tech parks like Electronic "
+    "City and Whitefield host thousands of tech companies. Major firms include "
+    "Infosys, Wipro, and TCS.\n\n"
+    "## Climate\n"
+    "The city sits at 920 meters altitude. This gives it pleasantly cool weather "
+    "year-round. Average temperatures rarely exceed 30 degrees.\n\n"
+    "## Food\n"
+    "Bengaluru's food scene is legendary. South Indian classics like masala dosa "
+    "and idli thrive here. Filter coffee shops dot every street corner."
+)
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=80,  # Aim for approximately 80 characters per chunk.
+    chunk_overlap=50,  # Adjacent chunks share 50 characters.
+)
+
+chunks = splitter.split_text(your_long_document)
+print(len(chunks))  # Number of chunks ready to embed.
+print(chunks)
