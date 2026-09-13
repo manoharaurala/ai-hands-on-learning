@@ -8,4 +8,6 @@ langchain
 langchain-openai
 langchain-google-genai
 langchain-groq
+sentence-transformers
+langchain_text_splitters
 
