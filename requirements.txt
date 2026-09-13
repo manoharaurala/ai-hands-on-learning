@@ -5,9 +5,11 @@ requests
 beautifulsoup4
 google-genai
 langchain
-langchain-openai
+langchain-chroma
+langchain-core
 langchain-google-genai
 langchain-groq
+langchain-huggingface
+langchain-openai
 sentence-transformers
-langchain_text_splitters
-
+langchain-text-splitters

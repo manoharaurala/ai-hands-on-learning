@@ -15,4 +15,5 @@ env/
 
 # Local application files
 .gradio/
+FourthClass/RagDemo/chroma_db/
 .DS_Store
