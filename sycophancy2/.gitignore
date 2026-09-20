@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+credentials.*
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+benchmark_results.*
+unclear-responses.md
+.pytest_cache/
+.coverage
