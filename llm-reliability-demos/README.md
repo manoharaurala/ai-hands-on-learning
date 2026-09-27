@@ -10,7 +10,7 @@ response.
 
 ### 1. Chain-of-Thought vs. direct answers
 
-`Demonstrate1.py` runs multi-step spatial, relational, scheduling, inventory,
+`cot_vs_direct.py` runs multi-step spatial, relational, scheduling, inventory,
 and logic problems with two prompt strategies:
 
 - **Direct:** request only a short final answer.
@@ -23,7 +23,7 @@ intended for a non-reasoning model so the prompt difference remains measurable.
 
 ### 2. Unconstrained output vs. JSON prompting vs. schema enforcement
 
-`Demonstrate2.py` extracts sentiment and entities from the same customer
+`structured_output.py` extracts sentiment and entities from the same customer
 review using three strategies:
 
 1. No output constraint.
@@ -44,7 +44,7 @@ The sample outputs are recorded in:
 
 ### 3. Tool-call error injection and handling
 
-`Demonstrate3.py` simulates a weather tool whose second call returns an HTTP
+`tool_error_handling.py` simulates a weather tool whose second call returns an HTTP
 503. It compares:
 
 - A normal assistant prompt with no error guidance.
@@ -59,7 +59,7 @@ reporting makes a degraded response diagnosable and safer.
 
 ### 4. Tool name and description calibration
 
-`Demonstrate4.py` tests weather-tool routing across a 2x2 matrix:
+`tool_schema_calibration.py` tests weather-tool routing across a 2x2 matrix:
 
 | Tool names | Loose descriptions | Tight descriptions |
 | --- | --- | --- |
@@ -85,10 +85,10 @@ export OPENAI_API_KEY="your_api_key_here"
 Then run an experiment:
 
 ```bash
-python cotVsDirect/Demonstrate1.py
-python cotVsDirect/Demonstrate2.py
-python cotVsDirect/Demonstrate3.py
-python cotVsDirect/Demonstrate4.py
+python llm-reliability-demos/cot_vs_direct.py
+python llm-reliability-demos/structured_output.py
+python llm-reliability-demos/tool_error_handling.py
+python llm-reliability-demos/tool_schema_calibration.py
 ```
 
 The `.env` file is ignored by Git and must never be committed. These
