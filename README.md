@@ -34,11 +34,20 @@ source /tmp/scaler-code-venv/bin/activate
 
 ### 3. Install the packages
 
+Run this command from the `Code` folder:
+
 ```bash
 python -m pip install -r requirements.txt
 ```
 
 You only need to install the packages once, unless `requirements.txt` changes.
+
+For an exercise with its own dependency file, such as `basic`, install that
+file explicitly:
+
+```bash
+python -m pip install -r basic/requirements.txt
+```
 
 ### 4. Configure environment variables
 
@@ -91,6 +100,42 @@ Reuse the root `requirements.txt` and `.env` unless the class needs an additiona
 ```bash
 deactivate
 ```
+
+## Repair or recreate a broken pip environment
+
+If `python -m pip` reports that `pip` has no `__main__` module, repair pip
+inside the activated environment:
+
+```bash
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip setuptools wheel
+```
+
+If that does not work, delete only the virtual environment and recreate it.
+First deactivate it, then run:
+
+```bash
+deactivate
+rm -rf /tmp/scaler-code-venv
+python3 -m venv /tmp/scaler-code-venv
+source /tmp/scaler-code-venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
+```
+
+The `rm -rf` command above targets only `/tmp/scaler-code-venv`. Do not
+replace that path with the project path or another directory. If you created
+the environment somewhere else, substitute only the exact virtual-environment
+directory you want to remove.
+
+Verify that Python and pip use the recreated environment:
+
+```bash
+which python
+python -m pip --version
+```
+
+Both commands should reference `/tmp/scaler-code-venv`.
 
 ## Run without activation
 
