@@ -2,13 +2,13 @@ from pathlib import Path
 
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 100
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+EMBEDDING_MODEL = "text-embedding-3-small"
 
 
 def build_index(pdf_path: str | Path) -> Chroma:
@@ -18,5 +18,5 @@ def build_index(pdf_path: str | Path) -> Chroma:
         chunk_overlap=CHUNK_OVERLAP,
     )
     chunks = splitter.split_documents(pages)
-    embedder = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+    embedder = OpenAIEmbeddings(model=EMBEDDING_MODEL)
     return Chroma.from_documents(chunks, embedder)

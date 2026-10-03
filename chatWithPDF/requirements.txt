@@ -1,0 +1,13 @@
+gradio
+chromadb
+langchain
+langchain-chroma
+langchain-core
+langchain-community
+langchain-openai
+langchain-text-splitters
+openai
+python-dotenv
+pypdf
+rank-bm25
+sentence-transformers

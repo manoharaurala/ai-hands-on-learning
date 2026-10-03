@@ -2,7 +2,7 @@ from pathlib import Path
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from sentence_transformers import CrossEncoder
 
@@ -14,7 +14,7 @@ CHROMA_DIR = Path(__file__).resolve().parent / "chroma_db"
 CANDIDATE_K = 25
 FINAL_K = 3
 
-embedder = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embedder = OpenAIEmbeddings(model="text-embedding-3-small")
 db = Chroma(persist_directory=str(CHROMA_DIR), embedding_function=embedder)
 reranker = CrossEncoder(RERANKER_MODEL)
 model = ChatOpenAI(

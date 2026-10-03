@@ -2,7 +2,7 @@ from pathlib import Path
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 
 CHROMA_DIR = Path(__file__).resolve().parent / "chroma_db"
@@ -17,7 +17,7 @@ docs = [
 splitter = RecursiveCharacterTextSplitter(chunk_size=50, chunk_overlap=10)
 chunks = splitter.create_documents(docs)
 
-embedder = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embedder = OpenAIEmbeddings(model="text-embedding-3-small")
 
 db = Chroma.from_documents(
     chunks,
