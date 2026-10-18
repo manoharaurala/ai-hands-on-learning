@@ -9,10 +9,12 @@ THE FIX:
 Group related tools in a class. They share ONE connection (here, one dict)
 via self, created once in __init__.
 
-    python shivank2/08_class_based_tools.py
+    python project2/08_class_based_tools.py
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from strands import Agent, tool

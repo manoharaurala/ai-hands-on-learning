@@ -11,7 +11,8 @@ Pick a live model from this list, add the "us." prefix, and set it in config.py.
 
 import boto3
 
-REGION = "us-east-1"
+from config import REGION
+
 client = boto3.client("bedrock", region_name=REGION)
 models = client.list_foundation_models()["modelSummaries"]
 

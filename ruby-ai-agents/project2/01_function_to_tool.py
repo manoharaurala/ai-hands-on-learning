@@ -7,10 +7,12 @@ A normal Python function is invisible to an agent. To expose it, add 3 things:
     2. type hints            -> tells the agent what data types to expect
     3. a proper docstring    -> tells the agent WHEN to use it
 
-    python shivank2/01_function_to_tool.py
+    python project2/01_function_to_tool.py
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import requests
@@ -19,8 +21,8 @@ from strands.models.bedrock import BedrockModel
 from config import MODEL_ID
 
 
-@tool                                              # 1. decorator
-def check_server_status(server_url: str) -> str:   # 2. type hints
+@tool  # 1. decorator
+def check_server_status(server_url: str) -> str:  # 2. type hints
     """Check if a server is responding by making an HTTP request.
 
     Args:
@@ -28,7 +30,7 @@ def check_server_status(server_url: str) -> str:   # 2. type hints
 
     Returns:
         A message indicating whether the server is up or down
-    """                                            # 3. docstring
+    """  # 3. docstring
     try:
         response = requests.get(server_url, timeout=5)
         return f"Server is up. Status code: {response.status_code}"

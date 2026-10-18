@@ -53,29 +53,20 @@ def check_credentials():
 
 
 def check_region():
-    import os
-    region = os.environ.get("AWS_DEFAULT_REGION")
-    if region == "us-east-1":
-        print(f"{OK} Region is us-east-1")
-    elif region:
-        print(f"{WARN} Region is '{region}' — examples assume us-east-1")
-    else:
-        print(
-            f"{WARN} AWS_DEFAULT_REGION not set — run: "
-            "export AWS_DEFAULT_REGION=us-east-1"
-        )
+    from config import REGION
+    print(f"{OK} Region is {REGION}")
 
 
 def check_bedrock():
     try:
         import boto3
-        from config import MODEL_ID
-        client = boto3.client("bedrock", region_name="us-east-1")
+        from config import MODEL_ID, REGION
+        client = boto3.client("bedrock", region_name=REGION)
         models = client.list_foundation_models()["modelSummaries"]
         print(f"{OK} Bedrock reachable — {len(models)} models listed")
 
         # Can we actually CALL the default model?
-        rt = boto3.client("bedrock-runtime", region_name="us-east-1")
+        rt = boto3.client("bedrock-runtime", region_name=REGION)
         rt.converse(
             modelId=MODEL_ID,
             messages=[{"role": "user", "content": [{"text": "Say OK"}]}],
@@ -94,7 +85,7 @@ def check_bedrock():
         print(f"{FAIL} Bedrock problem: {type(e).__name__}")
         if "AccessDenied" in msg:
             problems.append("Enable model access: Bedrock console → Model access → "
-                            "tick Claude Haiku 4.5 (region us-east-1)")
+                            f"tick Amazon Nova Micro (region {REGION})")
         elif "ResourceNotFound" in msg or "Legacy" in msg:
             problems.append("Model retired. Run: python 01_list_models.py, pick a live "
                             "one, and set it in config.py")

@@ -9,10 +9,12 @@ PARALLEL, so the whole thing takes about 2 seconds instead of 6.
 
 WATCH THE PRINTED TIMING at the end — that IS the lesson.
 
-    python shivank2/09_async_tools.py
+    python project2/09_async_tools.py
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import asyncio
@@ -34,8 +36,8 @@ async def check_warehouse_inventory(product_id: str, warehouse: str) -> dict:
     await asyncio.sleep(2)
 
     data = {
-        "east":    {"PROD-123": 45, "PROD-456": 12},
-        "west":    {"PROD-123": 30, "PROD-456": 0},
+        "east": {"PROD-123": 45, "PROD-456": 12},
+        "west": {"PROD-123": 30, "PROD-456": 0},
         "central": {"PROD-123": 60, "PROD-456": 25},
     }
 

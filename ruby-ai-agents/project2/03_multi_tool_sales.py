@@ -6,10 +6,12 @@ task. It's three: query, analyse, send.
 You give the agent three small tools. You NEVER tell it the order.
 It works out: get data -> analyse it -> email the result. That's planning.
 
-    python shivank2/03_multi_tool_sales.py
+    python project2/03_multi_tool_sales.py
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from strands import Agent, tool

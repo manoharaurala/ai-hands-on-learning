@@ -3,10 +3,12 @@
 Shows that the agent understands INTENT, not keywords. All three phrasings
 at the bottom work without any extra code — no regex, no intent classifier.
 
-    python shivank2/02_tip_calculator.py
+    python project2/02_tip_calculator.py
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from strands import Agent, tool
@@ -16,7 +18,7 @@ from config import MODEL_ID
 
 @tool
 def calculate_tip(
-    bill_amount: float, tip_percentage: float, num_people: int = 1
+        bill_amount: float, tip_percentage: float, num_people: int = 1
 ) -> dict:
     """Calculate tip and split the bill among people.
 

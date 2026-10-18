@@ -11,10 +11,12 @@ That prompt is a real safety feature — in production you often WANT a human
 approving actions. If a script ever seems to hang, it's probably waiting for
 you to type 'y'.
 
-    python shivank2/06_multi_prebuilt_tools.py
+    python project2/06_multi_prebuilt_tools.py
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from strands import Agent

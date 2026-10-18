@@ -4,21 +4,18 @@ You don't have to write everything. strands_tools ships ready-made tools.
 This also introduces the SYSTEM PROMPT: standing instructions that shape
 the agent's behaviour on every request.
 
-    python shivank2/05_prebuilt_tools.py
+    python project2/05_prebuilt_tools.py
 """
-
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+from config import NOVA_LITE
 from strands import Agent
-from strands.models.bedrock import BedrockModel
+from strands.models import BedrockModel
 from strands_tools import calculator
-from config import MODEL_ID
 
+llm = BedrockModel(model_id=NOVA_LITE)
 agent = Agent(
-    model=BedrockModel(model_id=MODEL_ID),
+    model=llm,
     tools=[calculator],
-    system_prompt="You are a helpful math assistant.",
+    system_prompt="You are a helpful math assistant."
 )
 
 agent("What's 42 raised to the power of 9?")
