@@ -1,0 +1,11 @@
+openai
+openai-agents
+python-dotenv
+google-genai
+yfinance
+certifi
+financetoolkit
+chromadb
+llama-index
+transformers
+torch
