@@ -1,7 +1,7 @@
 """
 ===============================================================================
  Future with Ruby — AI Harness
- Section 2 · Helper: print an agent run as a readable, numbered message trail
+ Helper: print an agent run as a readable, numbered message trail
 ===============================================================================
 
 WHY THIS FILE EXISTS
@@ -9,7 +9,7 @@ WHY THIS FILE EXISTS
 `agent.invoke(...)` returns a dict whose "messages" list is the agent's whole
 conversation. `print(result)` dumps it as one giant unreadable line. This
 helper prints the same information one message per line, so you can SEE the
-ReAct loop:
+React loop:
 
     [0] HumanMessage : What's the weather like in Bengaluru right now?
     [1] AIMessage    : 🛠  tool call → search({'query': 'Bengaluru weather now'})

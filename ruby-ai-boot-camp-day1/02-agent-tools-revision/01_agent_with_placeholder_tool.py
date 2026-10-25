@@ -1,7 +1,7 @@
 """
 ===============================================================================
- Future with Ruby — AI Harness
- Section 2 · Script 01 · Your first agent: an LLM + one (fake) tool
+Future with Ruby — AI Harness
+Script 01 · Your first agent: an LLM + one (fake) tool
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -23,10 +23,10 @@ we swap in a real web search — and nothing else changes.
 PREREQUISITES (.env)
 --------------------
     OPENAI_API_KEY=sk-...
-    OPENAI_MODEL=gpt-5.6-sol            # optional (default)
+    OPENAI_MODEL=gpt-4o-mini            # optional (default)
     LANGSMITH_TRACING=true              # optional — see the trace in LangSmith
     LANGSMITH_API_KEY=lsv2_...
-    LANGSMITH_PROJECT=section-02-first-agent
+    LANGSMITH_PROJECT=02-agent-tools-revision
 
 HOW TO RUN
 ----------
@@ -71,7 +71,7 @@ from langchain_openai import ChatOpenAI  # noqa: E402
 
 from agent_trace_printer import print_agent_trace  # noqa: E402
 
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-sol")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 QUESTION = "What's the weather like in Bengaluru right now?"
 

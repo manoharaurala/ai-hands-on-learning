@@ -1,7 +1,7 @@
 """
 ===============================================================================
  Future with Ruby — AI Harness
- Section 2 · Script 02 · Give the agent REAL web search (your own Tavily tool)
+ Script 02 · Give the agent REAL web search (your own Tavily tool)
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -70,7 +70,7 @@ from tavily import TavilyClient  # noqa: E402
 
 from agent_trace_printer import print_agent_trace  # noqa: E402
 
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-sol")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 DEFAULT_QUESTION = (
     "Find 3 upcoming AI or developer meetups in Bengaluru and give the date, "

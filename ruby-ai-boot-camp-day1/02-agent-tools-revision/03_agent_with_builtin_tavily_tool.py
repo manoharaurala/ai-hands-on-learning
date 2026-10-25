@@ -1,7 +1,7 @@
 """
 ===============================================================================
  Future with Ruby — AI Harness
- Section 2 · Script 03 · Use the vendor's ready-made LangChain tool (TavilySearch)
+ Script 03 · Use the vendor's ready-made LangChain tool (TavilySearch)
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -72,7 +72,7 @@ from langchain_tavily import TavilySearch  # noqa: E402
 
 from agent_trace_printer import print_agent_trace  # noqa: E402
 
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-sol")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 DEFAULT_QUESTION = (
     "Find 3 upcoming AI or developer meetups in Bengaluru and give the date, "

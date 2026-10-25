@@ -1,7 +1,7 @@
 """
 ===============================================================================
  Future with Ruby — AI Harness
- Section 2 · Script 04 · Structured output: make the agent return a Python object
+ Script 04 · Structured output: make the agent return a Python object
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -90,7 +90,7 @@ from langchain_tavily import TavilySearch  # noqa: E402
 
 from agent_trace_printer import print_agent_trace  # noqa: E402
 
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-sol")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 QUESTION = (
     "Find 3 upcoming AI or developer meetups in Bengaluru and give the date, "
