@@ -7,11 +7,9 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-from agents import Runner
-
 AGENTS_DIR = Path(__file__).resolve().parent / "agents"
 sys.path.insert(0, str(AGENTS_DIR))
-from orchestrator import orchestrator
+from orchestrator import run_research_workflow
 
 
 def parse_args() -> argparse.Namespace:
@@ -28,8 +26,7 @@ def parse_args() -> argparse.Namespace:
 
 
 async def run(request: str) -> str:
-    result = await Runner.run(orchestrator, request)
-    return result.final_output
+    return await run_research_workflow(request)
 
 
 def main() -> None:
