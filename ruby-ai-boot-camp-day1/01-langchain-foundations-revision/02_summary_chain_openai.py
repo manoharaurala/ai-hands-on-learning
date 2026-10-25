@@ -1,7 +1,7 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
- Section 1 · Script 02 · Your first LangChain chain: PromptTemplate | ChatOpenAI
+ Future with Ruby — AI Harness
+Script 02 · Your first LangChain chain: PromptTemplate | ChatOpenAI
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -32,11 +32,11 @@ The three building blocks you will use in EVERY later section:
 PREREQUISITES (.env)
 --------------------
     OPENAI_API_KEY=sk-...
-    OPENAI_MODEL=gpt-5.6-sol          # optional — this is the default
+    OPENAI_MODEL=gpt-4o-mini          # optional — this is the default
     # Optional tracing (see the bottom of this docstring):
     LANGSMITH_TRACING=true
     LANGSMITH_API_KEY=lsv2_...
-    LANGSMITH_PROJECT=section-01-langchain-foundations
+    LANGSMITH_PROJECT=01-langchain-foundations-revision
 
 HOW TO RUN
 ----------
@@ -44,8 +44,8 @@ HOW TO RUN
 
 EXPECTED OUTPUT (sample — the wording changes on every run)
 -----------------------------------------------------------
-    Hello from Future with Shivank — AI Harness!
-    Model: gpt-5.6-sol
+    Hello from Future with Ruby — AI Harness!
+    Model: gpt-4o-mini
 
     1. Headline: From newspaper boy in Rameswaram to India's "Missile Man" and President.
 
@@ -62,7 +62,7 @@ EXPECTED OUTPUT (sample — the wording changes on every run)
 LANGSMITH TRACING (optional, zero code changes)
 -----------------------------------------------
 Add the three LANGSMITH_* lines above to .env and run the script again. Open
-https://smith.langchain.com → project "section-01-langchain-foundations" and
+https://smith.langchain.com → project "01-langchain-foundations-revision" and
 you will see one trace called "RunnableSequence" with two children:
 "PromptTemplate" (the filled prompt) and "ChatOpenAI" (the model call, with
 latency, token count and cost). LangChain sends traces automatically whenever
@@ -83,7 +83,7 @@ from langchain_openai import ChatOpenAI  # noqa: E402
 from sample_data import PERSON_INFORMATION  # noqa: E402
 
 # Which OpenAI model to use. Change it in .env (OPENAI_MODEL=...) — no code edit.
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-sol")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 # -----------------------------------------------------------------------------
 # The prompt TEMPLATE
@@ -107,7 +107,7 @@ Using only this text, give me:
 # -----------------------------------------------------------------------------
 # Creates the chain  PromptTemplate | ChatOpenAI.
 #
-#   Input : model_name (str) e.g. "gpt-5.6-sol"
+#   Input : model_name (str) e.g. "gpt-4o-mini"
 #   Output: a Runnable. Call it with chain.invoke({"information": "..."})
 def build_profile_chain(model_name: str):
     # input_variables lists every {placeholder} the template expects.
@@ -126,13 +126,13 @@ def build_profile_chain(model_name: str):
 
 
 # ↑ Example:
-#   chain = build_profile_chain("gpt-5.6-sol")
+#   chain = build_profile_chain("gpt-4o-mini")
 #   chain.invoke({"information": "Sachin Tendulkar is a former Indian cricketer ..."})
-#   → AIMessage(content=..., response_metadata={"model_name": "gpt-5.6-sol", ...})
+#   → AIMessage(content=..., response_metadata={"model_name": "gpt-4o-mini", ...})
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
     print(f"Model: {OPENAI_MODEL}\n")
 
     chain = build_profile_chain(OPENAI_MODEL)

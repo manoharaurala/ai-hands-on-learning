@@ -1,6 +1,6 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
+ Future with Ruby — AI Harness
  Section 2 · Script 04 · Structured output: make the agent return a Python object
 ===============================================================================
 
@@ -42,7 +42,7 @@ HOW TO RUN
 
 EXPECTED OUTPUT (sample — live results change)
 ----------------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     ... (message trail as in Script 03) ...
 
     ============================================================
@@ -143,7 +143,7 @@ agent = create_agent(model=llm, tools=tools, response_format=AgentAnswer)
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
     result = agent.invoke({"messages": [HumanMessage(content=QUESTION)]})
 
     # The usual message trail is still there ...

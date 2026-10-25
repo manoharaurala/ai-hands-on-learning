@@ -1,7 +1,7 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
- Section 1 · Script 04 · What exactly comes back from an LLM call?
+ Future with Ruby — AI Harness
+ Script 04 · What exactly comes back from an LLM call?
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -35,7 +35,7 @@ HOW TO RUN
 
 EXPECTED OUTPUT (sample; numbers and ids differ on every run)
 -------------------------------------------------------------
-    Calling gpt-5.6-sol ...
+    Calling gpt-4o-mini ...
 
     type(response)        : AIMessage
     response.type         : ai
@@ -43,7 +43,7 @@ EXPECTED OUTPUT (sample; numbers and ids differ on every run)
     response.tool_calls   : []
     usage_metadata        : {'input_tokens': 412, 'output_tokens': 386, 'total_tokens': 798, ...}
     response_metadata keys: ['id', 'created_at', 'model', 'status', 'model_provider', 'model_name', ...]
-    model_name            : gpt-5.6-sol
+    model_name            : gpt-4o-mini
     response.id           : resp_0a1b2c...
     content is a          : list  (Responses-API content blocks) — that's why we use .text
 
@@ -63,7 +63,7 @@ from langchain_core.prompts import PromptTemplate  # noqa: E402
 
 from sample_data import PERSON_INFORMATION  # noqa: E402
 
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-sol")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma3:270m")
 
 PROFILE_TEMPLATE = """Here is a short biography:
@@ -96,7 +96,7 @@ def make_llm(use_local: bool):
 
 
 # ↑ Example:
-#   make_llm(use_local=False) → (ChatOpenAI(model="gpt-5.6-sol"), "gpt-5.6-sol")
+#   make_llm(use_local=False) → (ChatOpenAI(model="gpt-4o-mini"), "gpt-4o-mini")
 #   make_llm(use_local=True)  → (ChatOllama(model="gemma3:270m"), "gemma3:270m")
 
 

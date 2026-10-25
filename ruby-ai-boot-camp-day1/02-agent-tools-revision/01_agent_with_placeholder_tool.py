@@ -1,6 +1,6 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
+ Future with Ruby — AI Harness
  Section 2 · Script 01 · Your first agent: an LLM + one (fake) tool
 ===============================================================================
 
@@ -34,7 +34,7 @@ HOW TO RUN
 
 EXPECTED OUTPUT (the query and final wording may vary slightly)
 ---------------------------------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     🔎 search tool called with: Bengaluru weather now      ← printed INSIDE our tool
 
     The agent produced 4 messages:
@@ -124,7 +124,7 @@ agent = create_agent(model=llm, tools=tools)
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
 
     # An agent's input is a dict with a "messages" list — the same shape as a
     # chat conversation. HumanMessage = "this was typed by the user".

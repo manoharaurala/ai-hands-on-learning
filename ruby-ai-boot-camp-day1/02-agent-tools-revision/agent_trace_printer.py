@@ -1,6 +1,6 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
+ Future with Ruby — AI Harness
  Section 2 · Helper: print an agent run as a readable, numbered message trail
 ===============================================================================
 
@@ -67,7 +67,6 @@ def print_agent_trace(result: dict) -> None:
     # The final answer is simply the text of the LAST message.
     print("\nFINAL ANSWER:")
     print(messages[-1].text)
-
 
 # ↑ Example:
 #   result = agent.invoke({"messages": [HumanMessage(content="What's the weather like in Bengaluru right now?")]})

@@ -1,6 +1,6 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
+ Future with Ruby — AI Harness
  Section 1 · Sample input text shared by scripts 02, 03 and 04
 ===============================================================================
 

@@ -1,6 +1,6 @@
 # Section 2 — Your First Agent
 
-> **Future with Shivank — AI Harness** · LLM + tools = agent · real web search · structured output
+> **Future with Ruby — AI Harness** · LLM + tools = agent · real web search · structured output
 
 ## What you'll learn
 
@@ -14,7 +14,7 @@
 ## Files in this section
 
 | File | What it shows | Needs |
-|---|---|---|
+| --- | --- | --- |
 | `01_agent_with_placeholder_tool.py` | The agent loop with a fake `search` tool that always returns the same Bengaluru weather | `OPENAI_API_KEY` |
 | `02_agent_with_tavily_sdk_tool.py` | Your own `search` tool that calls the Tavily SDK (real web search) | + `TAVILY_API_KEY` |
 | `03_agent_with_builtin_tavily_tool.py` | The vendor's ready-made `TavilySearch` tool | + `TAVILY_API_KEY` |
@@ -31,7 +31,8 @@ uv sync
 cp .env.example .env      # add OPENAI_API_KEY and TAVILY_API_KEY
 ```
 
-Get a free Tavily key (1,000 credits per month) at https://app.tavily.com. The variable must be named exactly `TAVILY_API_KEY`.
+Get a free Tavily key (1,000 credits per month) at https://app.tavily.com. The variable must be named exactly
+`TAVILY_API_KEY`.
 
 ## Run
 
@@ -46,7 +47,7 @@ uv run python 04_agent_with_structured_output.py
 ## Expected output (script 01)
 
 ```
-Hello from Future with Shivank — AI Harness!
+Hello from Future with Ruby — AI Harness!
 🔎 search tool called with: Bengaluru weather now
 
 The agent produced 4 messages:
@@ -59,7 +60,9 @@ FINAL ANSWER:
 It's about 24°C in Bengaluru right now, with light drizzle and 78% humidity — keep an umbrella handy!
 ```
 
-The query the model writes and its final wording can vary slightly. Scripts 02–04 use live web results (by default: *"Find 3 upcoming AI or developer meetups in Bengaluru and give the date, venue and a link for each."*), so their answers change from day to day. Each file's header shows a sample.
+The query the model writes and its final wording can vary slightly. Scripts 02–04 use live web results (by default:
+*"Find 3 upcoming AI or developer meetups in Bengaluru and give the date, venue and a link for each."*), so their answers
+change from day to day. Each file's header shows a sample.
 
 ## How it works
 
@@ -80,7 +83,8 @@ LLM ──► "It's about 24°C in Bengaluru right now ..."   (no more tool call
 
 ## Optional: LangSmith tracing (highly recommended here)
 
-Add `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY=...` and `LANGSMITH_PROJECT=section-02-first-agent` to `.env`. Each run shows the whole loop:
+Add `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY=...` and `LANGSMITH_PROJECT=section-02-first-agent` to `.env`.
+Each run shows the whole loop:
 
 1. The first `ChatOpenAI` call returns a tool call.
 2. The tool runs.
@@ -89,7 +93,7 @@ Add `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY=...` and `LANGSMITH_PROJECT=sec
 ## Troubleshooting
 
 | Problem | Fix |
-|---|---|
+| --- | --- |
 | `MissingAPIKeyError` / Tavily 401 | `TAVILY_API_KEY` is missing or misspelled in `.env`. |
 | The agent answers without searching | Make the tool docstring more explicit, or ask something that clearly needs fresh data (weather, news, upcoming events). |
 | Meetup results look old or irrelevant | Live search quality varies. Add a month to the question, e.g. "... in Bengaluru in November", and run it again. |

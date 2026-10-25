@@ -1,4 +1,0 @@
-google-genai
-matplotlib
-openai
-python-dotenv

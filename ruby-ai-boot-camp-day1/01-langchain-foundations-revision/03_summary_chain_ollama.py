@@ -1,7 +1,7 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
- Section 1 · Script 03 · Same chain, LOCAL open-weights model (Ollama)
+ Future with Ruby — AI Harness
+Script 03 · Same chain, LOCAL open-weights model (Ollama)
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -10,7 +10,7 @@ LangChain gives every chat model the same interface. To move from a paid cloud
 model (OpenAI) to a free model running on YOUR laptop, you change exactly ONE
 line — the model object. The prompt, the chain and invoke() stay identical:
 
-    Script 02:  llm = ChatOpenAI(temperature=0, model="gpt-5.6-sol")
+    Script 02:  llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
     Script 03:  llm = ChatOllama(temperature=0, model="gemma3:270m")   ← only change
 
 Ollama is a free app that downloads open-weights models (Gemma, Qwen, Llama,
@@ -31,7 +31,7 @@ HOW TO RUN
 
 EXPECTED OUTPUT (sample — small local models vary a lot)
 --------------------------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     Model: gemma3:270m (local, via Ollama)
 
     **Headline:** Abdul Kalam: The Missile Man of India
@@ -96,7 +96,7 @@ def build_profile_chain(model_name: str):
         input_variables=["information"], template=PROFILE_TEMPLATE
     )
 
-    # llm = ChatOpenAI(temperature=0, model="gpt-5.6-sol")   # ← Script 02's line
+    # llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")   # ← Script 02's line
     llm = ChatOllama(temperature=0, model=model_name)  # ← talks to localhost:11434
 
     return profile_prompt_template | llm
@@ -108,7 +108,7 @@ def build_profile_chain(model_name: str):
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
     print(f"Model: {OLLAMA_MODEL} (local, via Ollama)\n")
 
     chain = build_profile_chain(OLLAMA_MODEL)

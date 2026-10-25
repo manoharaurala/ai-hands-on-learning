@@ -1,6 +1,6 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
+ Future with Ruby — AI Harness
  Section 2 · Script 03 · Use the vendor's ready-made LangChain tool (TavilySearch)
 ===============================================================================
 
@@ -33,7 +33,7 @@ HOW TO RUN
 
 EXPECTED OUTPUT (sample — live results change)
 ----------------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     Tool name the LLM sees: tavily_search
     Question: Find 3 upcoming AI or developer meetups in Bengaluru and give the date, venue and a link for each.
 
@@ -89,7 +89,7 @@ agent = create_agent(model=llm, tools=tools)
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
     print(f"Tool name the LLM sees: {search_tool.name}")
 
     question = " ".join(sys.argv[1:]) or DEFAULT_QUESTION

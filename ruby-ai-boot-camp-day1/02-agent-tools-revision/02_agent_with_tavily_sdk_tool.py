@@ -1,6 +1,6 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
+ Future with Ruby — AI Harness
  Section 2 · Script 02 · Give the agent REAL web search (your own Tavily tool)
 ===============================================================================
 
@@ -31,7 +31,7 @@ HOW TO RUN
 
 EXPECTED OUTPUT (sample — live web results change every day)
 ------------------------------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     Question: Find 3 upcoming AI or developer meetups in Bengaluru and give the date, venue and a link for each.
     🔎 search tool called with: upcoming AI meetups Bengaluru
     🔎 search tool called with: developer meetups Bangalore this month
@@ -124,7 +124,7 @@ agent = create_agent(model=llm, tools=tools)
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
 
     # sys.argv[1:] are the words typed after the script name, if any.
     question = " ".join(sys.argv[1:]) or DEFAULT_QUESTION

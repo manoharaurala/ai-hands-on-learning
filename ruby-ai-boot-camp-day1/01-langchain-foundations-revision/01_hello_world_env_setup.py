@@ -1,7 +1,7 @@
 """
 ===============================================================================
- Future with Shivank — AI Harness
- Section 1 · Script 01 · Hello world + loading API keys from a .env file
+ Future with Ruby — AI Harness
+ Script 01 · Hello world + loading API keys from a .env file
 ===============================================================================
 
 WHAT THIS FILE TEACHES
@@ -27,13 +27,13 @@ HOW TO RUN
 
 EXPECTED OUTPUT (with a key in .env)
 ------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     OPENAI_API_KEY loaded ✅  (starts with 'sk-proj-', 164 characters)
     LANGSMITH_TRACING = (not set) → tracing is optional, see Script 02
 
 EXPECTED OUTPUT (without a .env file)
 -------------------------------------
-    Hello from Future with Shivank — AI Harness!
+    Hello from Future with Ruby — AI Harness!
     OPENAI_API_KEY is missing ❌  → copy .env.example to .env and add your key
     LANGSMITH_TRACING = (not set) → tracing is optional, see Script 02
 ===============================================================================
@@ -73,7 +73,7 @@ def describe_secret(name: str) -> str:
 
 
 def main() -> None:
-    print("Hello from Future with Shivank — AI Harness!")
+    print("Hello from Future with Ruby — AI Harness!")
 
     # Verify the key that scripts 02 and 04 need.
     print(describe_secret("OPENAI_API_KEY"))
