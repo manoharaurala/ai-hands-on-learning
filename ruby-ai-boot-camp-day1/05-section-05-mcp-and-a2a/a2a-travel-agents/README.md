@@ -1,8 +1,10 @@
 # A2A Travel Agent Example
 
-A multi-agent travel planner demonstrating the **Agent-to-Agent (A2A) protocol** using [Strands Agents](https://github.com/strands-agents/sdk-python).
+A multi-agent travel planner demonstrating the **Agent-to-Agent (A2A) protocol**
+using [Strands Agents](https://github.com/strands-agents/sdk-python).
 
-Two specialized agents (Weather and Flights) run as independent A2A servers. A travel orchestrator acts as the A2A client, connecting to both over HTTP to gather information and present a trip summary.
+Two specialized agents (Weather and Flights) run as independent A2A servers. A travel orchestrator acts as the A2A
+client, connecting to both over HTTP to gather information and present a trip summary.
 
 ## Architecture
 
@@ -34,11 +36,11 @@ Two specialized agents (Weather and Flights) run as independent A2A servers. A t
 
 ## Files
 
-| File | Role | Description |
-|---|---|---|
-| `weather_agent_server.py` | A2A Server | Weather lookup agent on port 9001 |
-| `flights_agent_server.py` | A2A Server | Flight search & booking agent on port 9002 |
-| `travel_orchestrator.py` | A2A Client | Calls both agents and prints a trip summary |
+| File                      | Role       | Description                                 |
+|---------------------------|------------|---------------------------------------------|
+| `weather_agent_server.py` | A2A Server | Weather lookup agent on port 9001           |
+| `flights_agent_server.py` | A2A Server | Flight search & booking agent on port 9002  |
+| `travel_orchestrator.py`  | A2A Client | Calls both agents and prints a trip summary |
 
 ---
 
@@ -46,9 +48,11 @@ Two specialized agents (Weather and Flights) run as independent A2A servers. A t
 
 ### 1. Weather Agent Server (`weather_agent_server.py`)
 
-Creates a Strands `Agent` with a `@tool` called `get_weather` that looks up weather from a dictionary. The agent is wrapped in `A2AServer` and served on port 9001.
+Creates a Strands `Agent` with a `@tool` called `get_weather` that looks up weather from a dictionary. The agent is
+wrapped in `A2AServer` and served on port 9001.
 
-The server explicitly defines its **skills** — these get published in the **agent card** at `/.well-known/agent-card.json` so any A2A client can discover what this agent can do before sending a message.
+The server explicitly defines its **skills** — these get published in the **agent card** at
+`/.well-known/agent-card.json` so any A2A client can discover what this agent can do before sending a message.
 
 ```python
 from a2a.types import AgentSkill
@@ -80,7 +84,7 @@ server = A2AServer(
     agent=weather_agent,
     host="127.0.0.1",
     port=9001,
-    skills=WEATHER_SKILLS,   # <-- published in the agent card
+    skills=WEATHER_SKILLS,  # <-- published in the agent card
     version="1.0.0",
 )
 server.serve()
@@ -94,23 +98,38 @@ The agent card served at `http://127.0.0.1:9001/.well-known/agent-card.json` loo
   "description": "Provides current weather information for cities around the world.",
   "version": "1.0.0",
   "protocolVersion": "0.3.0",
-  "capabilities": { "streaming": true },
+  "capabilities": {
+    "streaming": true
+  },
   "skills": [
     {
       "id": "get_weather",
       "name": "Get Weather",
       "description": "Returns current weather conditions...",
-      "tags": ["weather", "temperature", "forecast", "travel"],
-      "examples": ["What is the weather in London?", "..."]
+      "tags": [
+        "weather",
+        "temperature",
+        "forecast",
+        "travel"
+      ],
+      "examples": [
+        "What is the weather in London?",
+        "..."
+      ]
     }
   ],
-  "defaultInputModes": ["text"],
-  "defaultOutputModes": ["text"],
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
   "url": "http://127.0.0.1:9001/"
 }
 ```
 
 Key points:
+
 - `AgentSkill` defines each capability with an id, name, description, tags, and example prompts
 - `skills=WEATHER_SKILLS` passes them to `A2AServer` so they appear in the agent card
 - The agent card is the A2A discovery mechanism — clients fetch it first to understand what the agent can do
@@ -146,7 +165,8 @@ server.serve()
 
 ### 3. Travel Orchestrator (`travel_orchestrator.py`)
 
-This is the A2A client. It does not use an LLM — it simply sends A2A messages to the two agent servers and prints the results. Here's the flow:
+This is the A2A client. It does not use an LLM — it simply sends A2A messages to the two agent servers and prints the
+results. Here's the flow:
 
 #### Step 1: Build an A2A message
 
@@ -188,7 +208,8 @@ async def send_a2a_message(base_url: str, text: str) -> str:
 
 #### Step 3: Extract text from the response
 
-The A2A server returns a **task** object containing **artifacts** (the final output). The orchestrator extracts the text:
+The A2A server returns a **task** object containing **artifacts** (the final output). The orchestrator extracts the
+text:
 
 ```python
 def extract_text(result) -> str:
@@ -232,7 +253,8 @@ Orchestrator                          Weather Agent (:9001)
 
 1. The client fetches the **agent card** to discover what the agent can do
 2. The client sends a **message/send** JSON-RPC request with the user's question
-3. The server's Strands Agent processes the message, calls its tools, and returns a **task** with **artifacts** containing the final text response
+3. The server's Strands Agent processes the message, calls its tools, and returns a **task** with **artifacts**
+   containing the final text response
 
 ---
 
@@ -242,9 +264,12 @@ Orchestrator                          Weather Agent (:9001)
 pip install -r requirements.txt
 ```
 
-You need AWS credentials with Amazon Bedrock access. Each agent uses `BEDROCK_MODEL_ID` (default `global.anthropic.claude-sonnet-4-6`).
+You need AWS credentials with Amazon Bedrock access. Each agent uses `BEDROCK_MODEL_ID` (default
+`amazon.nova-lite-v1:0`).
 
-**No Bedrock access?** Run `weather_agent_server_groq.py` and `flights_agent_server_groq.py` instead (install `requirements-groq.txt`). They use `GROQ_API_KEY` and `GROQ_MODEL_ID` (default `openai/gpt-oss-120b`) and need no AWS credentials; `travel_orchestrator.py` works with either pair.
+**No Bedrock access?** Run `weather_agent_server_groq.py` and `flights_agent_server_groq.py` instead (install
+`requirements-groq.txt`). They use `GROQ_API_KEY` and `GROQ_MODEL_ID` (default `openai/gpt-oss-120b`) and need no AWS
+credentials; `travel_orchestrator.py` works with either pair.
 
 Open three terminals:
 

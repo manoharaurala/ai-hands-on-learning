@@ -1,6 +1,7 @@
 # MCP Basics — Server and Client
 
-A [Model Context Protocol](https://modelcontextprotocol.io/) server and client over stdio. No LLM is needed — this is the protocol itself.
+A [Model Context Protocol](https://modelcontextprotocol.io/) server and client over stdio. No LLM is needed — this is
+the protocol itself.
 
 ```
 ┌────────────┐  stdio (stdin/stdout)  ┌────────────┐
@@ -13,14 +14,14 @@ The client starts the server as a subprocess; they exchange JSON-RPC messages th
 
 ## What the server exposes
 
-| Primitive | Name | What it is |
-|---|---|---|
-| Tool | `get_weather(city)` | A function the LLM can call |
-| Tool | `list_client_roots()` | Asks the *client* which folders it shared (roots) |
-| Resource (template) | `greeting://{name}` | Data the app can read, like a GET endpoint |
-| Resource (JSON) | `courses://directory` | A fixed resource with `application/json` content |
-| Prompt | `weather_report(city)` | A reusable prompt template |
-| Prompt | `generate_study_plan(course, exam_date)` | A template with two arguments |
+| Primitive           | Name                                     | What it is                                        |
+|---------------------|------------------------------------------|---------------------------------------------------|
+| Tool                | `get_weather(city)`                      | A function the LLM can call                       |
+| Tool                | `list_client_roots()`                    | Asks the *client* which folders it shared (roots) |
+| Resource (template) | `greeting://{name}`                      | Data the app can read, like a GET endpoint        |
+| Resource (JSON)     | `courses://directory`                    | A fixed resource with `application/json` content  |
+| Prompt              | `weather_report(city)`                   | A reusable prompt template                        |
+| Prompt              | `generate_study_plan(course, exam_date)` | A template with two arguments                     |
 
 And the client exposes **roots** — the folders the server is allowed to work in.
 

@@ -9,20 +9,17 @@ Run:  python flights_agent_server.py
 import logging
 import os
 
+# AgentSkill: A2A SDK type that describes a capability in the agent card
+from a2a.types import AgentSkill
 # Agent: the core Strands agent class that wraps an LLM with tools
 # tool: decorator that registers a Python function as a tool the LLM can call
 from strands import Agent, tool
-
+# BedrockModel: the LLM behind this agent (Amazon Bedrock)
+from strands.models.bedrock import BedrockModel
 # A2AServer: wraps a Strands Agent into an HTTP server that speaks the A2A protocol
 from strands.multiagent.a2a import A2AServer
 
-# AgentSkill: A2A SDK type that describes a capability in the agent card
-from a2a.types import AgentSkill
-
-# BedrockModel: the LLM behind this agent (Amazon Bedrock)
-from strands.models.bedrock import BedrockModel
-
-MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "global.anthropic.claude-sonnet-4-6")
+MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0")
 REGION = os.getenv("AWS_REGION", os.getenv("AWS_DEFAULT_REGION", "us-east-1"))
 
 # Set up logging so we can see what's happening during requests
@@ -217,5 +214,9 @@ if __name__ == "__main__":
         enable_a2a_compliant_streaming=True,
     )
     print("Flights Agent A2A server starting on http://127.0.0.1:9002")
+    # Open this URL in a browser or fetch it with curl to inspect the card:
+    # http://127.0.0.1:9002/.well-known/agent-card.json
+    # The A2A standard uses /.well-known/agent-card.json; /agent/card.json
+    # is not a route created by A2AServer.
     # Start the uvicorn HTTP server — blocking call, runs until Ctrl+C
     server.serve()

@@ -11,20 +11,16 @@ Run:  python weather_agent_server_groq.py    (needs GROQ_API_KEY, or a .env file
 import logging
 import os
 
+# AgentSkill: A2A SDK type that describes a capability in the agent card
+from a2a.types import AgentSkill
+from dotenv import load_dotenv
 # Agent: the core Strands agent class that wraps an LLM with tools
 # tool: decorator that registers a Python function as a tool the LLM can call
 from strands import Agent, tool
-
-# A2AServer: wraps a Strands Agent into an HTTP server that speaks the A2A protocol
-from strands.multiagent.a2a import A2AServer
-
-# AgentSkill: A2A SDK type that describes a capability in the agent card
-from a2a.types import AgentSkill
-
-from dotenv import load_dotenv
-
 # OpenAIModel: the LLM behind this agent (Groq, via its OpenAI-compatible API)
 from strands.models.openai import OpenAIModel
+# A2AServer: wraps a Strands Agent into an HTTP server that speaks the A2A protocol
+from strands.multiagent.a2a import A2AServer
 
 load_dotenv()
 

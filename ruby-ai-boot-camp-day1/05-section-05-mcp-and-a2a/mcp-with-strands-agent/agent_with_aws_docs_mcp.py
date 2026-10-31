@@ -19,7 +19,7 @@ from strands import Agent
 from strands.models.bedrock import BedrockModel
 from strands.tools.mcp import MCPClient
 
-MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "global.anthropic.claude-sonnet-4-6")
+MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0")
 REGION = os.getenv("AWS_REGION", os.getenv("AWS_DEFAULT_REGION", "us-east-1"))
 
 if shutil.which("uvx") is None:
@@ -47,5 +47,6 @@ with mcp_client:
         tools=tools,
         system_prompt="Answer AWS questions using the documentation tools. Cite the doc URLs you used.",
     )
-    agent("What is AWS Lambda, and what is the maximum timeout for a Lambda function?")
+    agent(
+        "What is ECS Fargate service.How it is different from ECS.Also let us know do we need to provision EC2 instance for running it")
     print()

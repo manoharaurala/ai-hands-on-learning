@@ -11,11 +11,9 @@ import sys
 from pathlib import Path
 
 import mcp.types as types
-
 # ClientSession: the MCP protocol session (initialize, list, call, ...)
 # StdioServerParameters: how to start the server subprocess
 from mcp import ClientSession, StdioServerParameters
-
 # stdio_client: starts the server process and returns read/write streams
 from mcp.client.stdio import stdio_client
 
